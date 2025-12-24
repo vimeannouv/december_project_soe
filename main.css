@@ -2,10 +2,13 @@ h1{
     font-size: 50px;
     background-color: beige;
     text-align: center;
-    border-radius: 50%;
+    border-radius: 150px;
+    border: 2px solid rgb(227, 90, 75);
 }
 
 p{
+    color: black;
     text-align: center;
+    line-height: 40px;
     font-size: 15px;
 }
