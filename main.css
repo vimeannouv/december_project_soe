@@ -29,6 +29,14 @@ main{
     font-size: 25;
 }
 
+.sidebar li {
+    color: #61afef;
+}
+
+.sidebar h1{
+    color: #c678dd;
+}
+
 .content{
     flex: 1; /* stands for flexible box layout. */
     padding: 20px;
