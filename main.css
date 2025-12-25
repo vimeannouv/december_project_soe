@@ -13,18 +13,19 @@ main{
 
 .sidebar{
     background-color: #1d2025;
-    width: 500px;
+    width: 250px;
     padding: 20px;
     position: sticky;
     top: 0;
     height: 100%;
     padding: 20px;
+    color: white;
 }
 
 .content{
-    flex: 1;
+    flex: 1; /* stands for flexible box layout. */
     padding: 20px;
-    margin-left: 500px;
     text-align: center;
     background-color: #282c34;
+    color: white;
 }
