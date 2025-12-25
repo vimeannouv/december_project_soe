@@ -1,14 +1,20 @@
-h1{
-    font-size: 50px;
-    background-color: beige;
-    text-align: center;
-    border-radius: 150px;
-    border: 2px solid rgb(227, 90, 75);
+html{
+    scroll-behavior: smooth;
 }
 
-p{
-    color: black;
+main{
+    display: flex;
+}
+
+.sidebar{
+    margin-left: 500px;
+    background-color: #1d2025;
+    width: 400px;
+    padding: 20px;
+}
+
+.content{
+    margin-left: 500px;
     text-align: center;
-    line-height: 40px;
-    font-size: 100px;
+    background-color: #282c34;
 }
