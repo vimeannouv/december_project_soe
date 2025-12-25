@@ -12,7 +12,7 @@ html{
 }
 
 main{
-    display: flex;
+    display: flex; /* stands for flexible box layout. */
 }
 
 .sidebar{
@@ -40,7 +40,7 @@ main{
 }
 
 .content{
-    flex: 1; /* stands for flexible box layout. */
+    flex: 1; 
     padding: 16px;
     text-align: center;
     background-color: #282c34;
