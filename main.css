@@ -42,7 +42,7 @@ main{
 
 .content{
     flex: 1; /* stands for flexible box layout. */
-    padding: 18px;
+    padding: 16px;
     text-align: center;
     background-color: #282c34;
     color: white;
@@ -59,10 +59,12 @@ main{
 }
 
 .content h3{
-    color: ;
+    color: #c678dd;
     font-size: 25px;
+    text-decoration: underline;
 }
 
 p{
     color: #fdfdfd;
+    font-size: 16px;
 }
