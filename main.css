@@ -1,5 +1,10 @@
 html{
     scroll-behavior: smooth;
+    min-height: 100%;
+}
+
+*{
+    box-sizing: border-box; /* this makes it very easy for side-by-side panels. the * means apply to all elements. */
 }
 
 main{
@@ -7,13 +12,18 @@ main{
 }
 
 .sidebar{
-    margin-left: 500px;
     background-color: #1d2025;
-    width: 400px;
+    width: 500px;
+    padding: 20px;
+    position: sticky;
+    top: 0;
+    height: 100%;
     padding: 20px;
 }
 
 .content{
+    flex: 1;
+    padding: 20px;
     margin-left: 500px;
     text-align: center;
     background-color: #282c34;
