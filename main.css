@@ -25,7 +25,8 @@ main{
     top: 0;
     height: 100%;
     padding: 20px;
-
+    height: 100%;
+    
     /* text */
     line-height: 50px;
     font-size: 20;
