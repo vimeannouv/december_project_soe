@@ -1,3 +1,5 @@
+@import url("fonts.googleapis.com/css2?family=Lexend");
+
 html{
     scroll-behavior: smooth;
     min-height: 100%;
@@ -5,6 +7,7 @@ html{
 
 *{
     box-sizing: border-box; /* this makes it very easy for side-by-side panels. the * means apply to all elements. */
+    font-family: "Lexend", sans-serif;
 }
 
 main{
@@ -20,6 +23,10 @@ main{
     height: 100%;
     padding: 20px;
     color: white;
+
+    /* text */
+    line-height: 10px;
+    font-size: 25;
 }
 
 .content{
@@ -28,4 +35,16 @@ main{
     text-align: center;
     background-color: #282c34;
     color: white;
+}
+
+.content h1{
+    color: #c678dd;
+}
+
+.content h2{
+    color: #61afef;
+}
+
+p{
+    color: #fdfdfd;
 }
