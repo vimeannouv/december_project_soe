@@ -9,6 +9,7 @@ html{
     box-sizing: border-box; /* this makes it very easy for side-by-side panels. the * means apply to all elements. */
     font-family: "Lexend", sans-serif;
     margin: 0;
+    background-color: #1d2025;
 }
 
 main{
@@ -50,7 +51,7 @@ main{
 .content h1{
     color: #c678dd;
     font-size: 40px;
-    margin-bottom: 80px;
+    margin-bottom: 60px;
 }
 
 .content h2{
@@ -66,7 +67,8 @@ main{
 }
 
 .content .banner{
-    margin-bottom: 150px;
+    margin-bottom: 75px;
+    background-color: #252931;  
 }
 
 p{
