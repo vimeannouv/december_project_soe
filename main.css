@@ -16,6 +16,7 @@ main{
 }
 
 .sidebar{
+    /* box */
     background-color: #1d2025;
     width: 250px;
     padding: 20px;
@@ -23,14 +24,12 @@ main{
     top: 0;
     height: 100%;
     padding: 20px;
-    color: white;
 
     /* text */
     line-height: 50px;
     font-size: 20;
+    color: white;
 }
-
-
 
 .sidebar li {
     color: #61afef;
@@ -62,6 +61,10 @@ main{
     color: #c678dd;
     font-size: 25px;
     text-decoration: underline;
+}
+
+.content .banner{
+    margin-bottom: 100px;
 }
 
 p{
