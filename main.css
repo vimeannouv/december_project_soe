@@ -1,20 +1,31 @@
 @import url("fonts.googleapis.com/css2?family=Lexend");
 
+/* |~~ GENERAL STYLING ~~| */
+
 html{
     scroll-behavior: smooth;
     min-height: 100%;
 }
 
-*{
+main{
     box-sizing: border-box; /* this makes it very easy for side-by-side panels. the * means apply to all elements. */
+    display: flex; /* stands for flexible box layout. */
+    background-color: transparent;
     font-family: "Lexend", sans-serif;
     margin: 0;
-    background-color: transparent;
 }
 
-main{
-    display: flex; /* stands for flexible box layout. */
+*{
+    margin: 0;
 }
+
+p{
+    color: #fdfdfd;
+    font-size: 16px;
+    text-align: left;
+}
+
+/* |~~ SIDEBAR STYLING ~~| */
 
 .sidebar{
     /* box */
@@ -33,7 +44,8 @@ main{
     color: white;
 }
 
-.sidebar li {
+
+.sidebar li{
     color: #61afef;
 }
 
@@ -42,6 +54,7 @@ main{
     margin-bottom: 25px;
 }
 
+/* |~~ CONTENT STYLING ~~| */
 .content{
     flex: 1; 
     padding: 16px;
@@ -69,16 +82,10 @@ main{
     margin-top: 35px;
 }
 
-.content .banner{
+.banner{
     margin-bottom: 25px;
     background-color: #252931;  
     padding-top: 30px;
     padding-bottom: 30px;
     width: 100%;
-}
-
-p{
-    color: #fdfdfd;
-    font-size: 16px;
-    text-align: left;
 }
