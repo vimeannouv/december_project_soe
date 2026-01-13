@@ -2,23 +2,23 @@
 
 /* |~~ GENERAL STYLING ~~| */
 
-html{
+html, body{
     scroll-behavior: smooth;
     min-height: 100%;
     height: 100%;
 }
 
-main{
+.layout{
     box-sizing: border-box; /* this makes it very easy for side-by-side panels. the * means apply to all elements. */
     display: flex; /* stands for flexible box layout. */
     background-color: transparent;
-    font-family: "Lexend", sans-serif;
-    margin: 0;
-    height: 100%;
+    align-items: stretch; /* makes both panels the same height */
+    min-height: 100vh;
 }
 
 *{
     margin: 0;
+    font-family: "Lexend", sans-serif;
 }
 
 p{
@@ -38,8 +38,8 @@ p{
     top: 0px;
     height: 100vh;
     padding: 20px;
-    height: 100%;
-    
+    height: 100vh;
+
     /* text */
     line-height: 50px;
     font-size: 20;
@@ -50,6 +50,12 @@ p{
 .sidebar li{
     color: #61afef;
 }
+
+.sidebar a{
+    color: #61afef;
+    text-decoration: none;
+}
+
 
 .sidebar h1{
     color: #c678dd;
