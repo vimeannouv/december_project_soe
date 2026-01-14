@@ -15,7 +15,7 @@ function createNavigationLinks() {
         const a = document.createElement("a");
 
         a.href = `#${h3.id}`; // hyperlink reference. # means look for element
-        a.textContent = h3.textContent.replace(new RegExp(`^Module ${index+1}:\s*`), ''); // removes "module x" fromt the link. Regexp is the constructor for regex.
+        a.textContent = h3.textContent.replace(new RegExp(/^Module \d+:\s*/), ''); // removes "module x" fromt the link
 
         li.appendChild(a);
         sidebarList.append(li);
@@ -24,15 +24,14 @@ function createNavigationLinks() {
 
 async function writeContent() { // --> Promise
     const content = document.getElementById("content");
-    const response = await fetch("content.txt"); // ==> promise<Response>
-    const text = await response.text();
+    const response = await fetch("content.txt"); // --> promise<Response>
+    const text = await response.text(); // await waits for the promise to be resolved
     const lines = text.split('\n');
 
     lines.forEach(line => {
         let element = null;
         if (line.startsWith("#"))
             element = document.createElement("h3");
-
         else
             element = document.createElement("p");
 
@@ -58,5 +57,7 @@ regex:
 + ==> one or more
 \s ==> whitespace
 * ==> zero or more
+
+Async: returns a promise
 
 */
