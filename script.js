@@ -1,36 +1,68 @@
 function createNavigationLinks() {
-    const headings = document.querySelectorAll(".content h3")
-    const sidebar = document.getElementById("sidebar")
-    const sidebarList = document.createElement("ul")
+    const headings = document.querySelectorAll(".content h3");
+    const sidebar = document.getElementById("sidebar");
+    const sidebarList = document.createElement("ul");
 
-    sidebar.appendChild(sidebarList)
+    sidebar.appendChild(sidebarList);
     headings.forEach((h3, index) => {
 
-        if (!h3.id) {
-            h3.id = `heading-${index}` // `${"..."} ==> string template`
-        }
-
-        console.log(h3.textContent)
+        if (!h3.id) 
+            h3.id = `heading-${index}`; // `${"..."} ==> string template`
         
-        const li = document.createElement("li")
-        const a = document.createElement("a")
+        console.log(h3.textContent);
+        
+        const li = document.createElement("li");
+        const a = document.createElement("a");
 
-        a.href = `#${h3.id}` // hyperlink reference
-        a.textContent = h3.textContent
+        a.href = `#${h3.id}`; // hyperlink reference. # means look for element
+        a.textContent = h3.textContent;
 
-        li.appendChild(a)
-        sidebarList.append(li)
+        li.appendChild(a);
+        sidebarList.append(li);
     })
 }
 
-function onLoaded() {
-    createNavigationLinks()
+function writeContent() {
+    const content = document.getElementById("content");
+
+    return fetch("content.txt") // ==> promise<Response>
+    .then(response => response.text()) // response ==> {return response.text()}
+    .then(text => {
+        const lines = text.split('\n')
+        lines.forEach(line => {
+            let element = null;
+            if (line.startsWith("#"))
+                element = document.createElement("h3");
+            else
+                element = document.createElement("p");
+
+            element.textContent = line.replace(/^#+\s*/, '');
+            content.appendChild(element);
+        });
+    })
+    .catch(reason => 
+        {console.log(reason)}
+    );
 }
 
-document.addEventListener("DOMContentLoaded", onLoaded) // fires when the HTML document has been completely loaded and parsed, so basically on start
+function onLoaded() {
+    writeContent()
+    .then(() => {
+        createNavigationLinks()
+    });
+}
+
+document.addEventListener("DOMContentLoaded", onLoaded); // fires when the HTML document has been completely loaded and parsed, so basically on start
 
 /*
                ~~ notes ~~
 obj.appendChild(childElement) ==> similar to "child.Parent = Instace".  Sends child to bottom
+
+regex:
+/.../  ==> literal
+^ ==> start of string
++ ==> one or more
+\s ==> whitespace
+* ==> zero or more
 
 */
