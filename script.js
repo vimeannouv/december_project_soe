@@ -39,13 +39,11 @@ async function writeContent() { // --> Promise
         element.textContent = line.replace(/^#+\s*/, '');
         content.appendChild(element);
     });
-} 
+}
 
 function onLoaded() {
     writeContent()
-    .then(() => {
-        createNavigationLinks()
-    });
+    .then(createNavigationLinks());
 }
 
 document.addEventListener("DOMContentLoaded", onLoaded); // fires when the HTML document has been completely loaded and parsed, so basically on start
