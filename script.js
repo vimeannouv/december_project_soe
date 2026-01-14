@@ -40,13 +40,27 @@ async function writeContent() { // --> Promise
     });
 }
 
-function onLoaded() {
+function playNavigationLinkAnimation(ev) {
+    const target = ev.target;
+    if (target.tagName == "A" && target.parentElement.parentElement.parentElement.id == "sidebar") {
+        const li = target.parentElement
+        li.classList.add("linkClicked");
+        li.addEventListener("animationend", () => li.classList.remove("linkClicked"));
+    }
+}
+
+function contentLoaded() {
     writeContent()
     .then(createNavigationLinks);
 }
 
-document.addEventListener("DOMContentLoaded", onLoaded); // fires when the HTML document has been completely loaded and parsed, so basically on start
+function onClick(ev) {
+    playNavigationLinkAnimation(ev)
+}
 
+document.addEventListener("DOMContentLoaded", contentLoaded); // fires when the HTML document has been completely loaded and parsed, so basically on start
+
+document.addEventListener("click", onClick);
 /*
                ~~ notes ~~
 obj.appendChild(childElement) ==> similar to "child.Parent = Instace".  Sends child to bottom
