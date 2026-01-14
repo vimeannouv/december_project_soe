@@ -15,7 +15,7 @@ function createNavigationLinks() {
         const a = document.createElement("a");
 
         a.href = `#${h3.id}`; // hyperlink reference. # means look for element
-        a.textContent = h3.textContent;
+        a.textContent = h3.textContent.replace(new RegExp(`^Module ${index+1}:\s*`), ''); // removes "module x" fromt the link. Regexp is the constructor for regex.
 
         li.appendChild(a);
         sidebarList.append(li);
@@ -43,7 +43,7 @@ async function writeContent() { // --> Promise
 
 function onLoaded() {
     writeContent()
-    .then(createNavigationLinks());
+    .then(createNavigationLinks);
 }
 
 document.addEventListener("DOMContentLoaded", onLoaded); // fires when the HTML document has been completely loaded and parsed, so basically on start
@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded", onLoaded); // fires when the HTML 
 obj.appendChild(childElement) ==> similar to "child.Parent = Instace".  Sends child to bottom
 
 regex:
-/.../  ==> literal
+/ /  ==> literal
 ^ ==> start of string
 + ==> one or more
 \s ==> whitespace
