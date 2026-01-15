@@ -15,7 +15,7 @@ function createNavigationLinks() {
         const a = document.createElement("a");
 
         a.href = `#${h3.id}`; // hyperlink reference. # means look for element
-        a.textContent = h3.textContent.replace(new RegExp(/^Module \d+:\s*/), ''); // removes "module x" fromt the link
+        a.textContent = h3.textContent.replace(/^Module \d+:\s*/, ''); // removes "module x" fromt the link
 
         li.appendChild(a);
         sidebarList.append(li);
@@ -43,9 +43,17 @@ async function writeContent() { // --> Promise
 function playNavigationLinkAnimation(ev) {
     const target = ev.target;
     if (target.tagName == "A" && target.parentElement.parentElement.parentElement.id == "sidebar") {
-        const li = target.parentElement
-        li.classList.add("linkClicked");
-        li.addEventListener("animationend", () => li.classList.remove("linkClicked"));
+        const li = target.parentElement;
+
+        const referenceElementId = target.getAttribute("href").substring(1); // getAttribute returns #element, using the attribute 'href' outputs the link.
+        const h3 = document.getElementById(referenceElementId);
+
+        // play anims
+        li.classList.add("link-flash-animation");
+        h3.classList.add("content-h3-flash-animation");
+
+        li.addEventListener("animationend", () => li.classList.remove("link-flash-animation"));
+        h3.addEventListener("animationend", () => h3.classList.remove("content-h3-flash-animation"));
     }
 }
 
