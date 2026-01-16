@@ -10,6 +10,10 @@
     animation: click-flash 1.2s ease-in-out;
 }
 
+.sidebar .close{
+    transform: translateX(-100%);
+}
+
 /* ~~ KEY-FRAMES ~~ */
 
 @keyframes click-flash{

@@ -1,4 +1,4 @@
-:root{
+:root{ /* aka html{} */
     /* COLORING */
     --sidebar-background-color: #1d2025;
     --content-background-color: #282c34;

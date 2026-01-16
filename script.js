@@ -42,19 +42,26 @@ async function writeContent() { // --> Promise
 
 function playNavigationLinkAnimation(ev) {
     const target = ev.target;
-    if (target.tagName == "A" && target.parentElement.parentElement.parentElement.id == "sidebar") {
-        const li = target.parentElement;
+    if (target.tagName != "A" || target.parentElement.parentElement.parentElement.id != "sidebar") 
+        return
 
-        const referenceElementId = target.getAttribute("href").substring(1); // getAttribute returns #element, using the attribute 'href' outputs the link.
-        const h3 = document.getElementById(referenceElementId);
+    const li = target.parentElement;
 
-        // play anims
-        li.classList.add("link-flash-animation");
-        h3.classList.add("content-h3-flash-animation");
+    const referenceElementId = target.getAttribute("href").substring(1); // getAttribute returns #element, using the attribute 'href' outputs the link.
+    const h3 = document.getElementById(referenceElementId);
 
-        li.addEventListener("animationend", () => li.classList.remove("link-flash-animation"));
-        h3.addEventListener("animationend", () => h3.classList.remove("content-h3-flash-animation"));
-    }
+    // play anims
+    li.classList.add("link-flash-animation");
+    h3.classList.add("content-h3-flash-animation");
+
+    li.addEventListener("animationend", () => li.classList.remove("link-flash-animation"));
+    h3.addEventListener("animationend", () => h3.classList.remove("content-h3-flash-animation"));
+    
+}
+
+function sidebarToggle(ev) {
+    const target = ev.target;
+    
 }
 
 function contentLoaded() {
@@ -64,6 +71,7 @@ function contentLoaded() {
 
 function onClick(ev) {
     playNavigationLinkAnimation(ev)
+    sidebarToggle(ev)
 }
 
 document.addEventListener("DOMContentLoaded", contentLoaded); // fires when the HTML document has been completely loaded and parsed, so basically on start
