@@ -55,6 +55,23 @@ p{
     padding: 0;
 }
 
+.sidebar .header{
+    display: flex;
+    color: var(--purple-color);
+}
+
+.sidebar .close-toggle{
+    background-color: transparent;
+    border-radius: 100%;
+    color: var(--purple-color);
+    border: none;
+    font-size: 20px;
+    width: 54px;
+    height: 54px;
+    margin-left: 25px;
+    margin-bottom: 5px;
+}
+
 .sidebar li{
     color: #61afef;
     border: solid 1px #282c34;
@@ -70,7 +87,6 @@ p{
 }
 
 .sidebar h1{
-    color: #c678dd;
     margin-bottom: 25px;
 }
 

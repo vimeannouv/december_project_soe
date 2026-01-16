@@ -61,7 +61,6 @@ function playNavigationLinkAnimation(ev) {
 
 function sidebarToggle(ev) {
     const target = ev.target;
-    
 }
 
 function contentLoaded() {
