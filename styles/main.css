@@ -55,6 +55,7 @@ p{
 }
 
 .sidebar-toggle-button{
+    box-sizing: border-box;
     background-color: transparent;
     border-radius: 30%;
     color: var(--purple-color);
@@ -67,7 +68,7 @@ p{
     transform: translateX(0);
     transition: 
         color 0.3s ease-in-out,
-        transform 0.3s ease-in-out;
+        transform 0.5s ease-in-out;
 }
 
 .sidebar li{
@@ -94,13 +95,15 @@ p{
     text-align: center;
     background-color: var(--content-background-color);
     width: 100%;
-    margin-left: var(--sidebar-width);
-    transition: margin-left 0.5s ease-in-out;
+    padding-right: 0;
+    padding-left: 250px;
+    padding-top: 0;
+    transition: padding-left 0.5s ease-in-out;
 }
 
 .content p{
-    margin-right: 40px;
-    margin-left: 40px;
+    margin-right: 80px;
+    margin-left: 80px;
 }
 
 .content h1{

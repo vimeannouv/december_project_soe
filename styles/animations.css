@@ -15,11 +15,11 @@
 }
 
 .content.fill{
-    margin-left: 0px;
+    padding-left: 0px;
 }
 
 .sidebar-toggle-button.fill{
-    transform: translateX(150%);
+    transform: translateX(200%);
 }
 
 .sidebar .sidebar-toggle-button:hover{
