@@ -4,7 +4,8 @@ html, body{
     --content-background-color: #282c34;
     --purple-color: #c678dd; 
     --blue-color: #61afef; 
-
+    --rose-color: #E06C75; 
+    --orange-color: #D19A66; 
     --sidebar-width: 250px;
 
     scroll-behavior: smooth;

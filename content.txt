@@ -3,7 +3,29 @@
 Welcome to my portfolio! 
 
 #Module 1: HTML
-this is truly **epic** so yeah...
+
+**- HTML Structure and semantics:** My project has been split into head and body. The head allows me to import links, such as Awesome Font, the javascript file, and css styles. The body includes all the content, such also includes the paragraphs that's being read right now.
+
+<br>
+
+Within the body, there are two elements, the sidebar and content. The sidebar is a *nav* element--because it hosts navigation links. The content is a *main* element, because it houses the primary content for the page.
+
+<br>
+
+As a child to the content element, there exists the banner, which is a *section* element to represent that it takes a significant area in the content.
+
+<br>
+
+Evidently, throughout the project, I have applied semantics to deepen the meaning of elemenets; alongside them, I have also used classes which both acts as the name of the element and/or a stylistic tag.
+
+<br>
+
+**- Content and Organisation:** I organised my page into two panels: the *sidebar* and *content*, leveraging classes to seperate my subjects of concerns, this can be demonstrated in the class *sidebar* and *contents*.
+
+<br>
+
+**- Use of media elements:** I have used unordered lists, hyperlinks, images and icons throughout the project in order to engage visitors.
+
 #Module 2: CSS
 
 #Module 3: JS

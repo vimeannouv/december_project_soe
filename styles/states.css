@@ -4,6 +4,15 @@
 .bold{
     color: #D19A66;
     font-weight: bold;
+}   
+
+.italic{
+    font-style: italic;
+}
+
+.underline{
+    text-decoration: underline;
+    text-decoration-color: var(--orange-color);
 }
 
 /* SIDE BAR */

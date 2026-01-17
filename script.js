@@ -23,6 +23,7 @@ function createNavigationLinks() {
 }
 
 async function writeContent() { // --> Promise
+
     const content = document.getElementById("content");
     const response = await fetch("content.txt"); // --> promise<Response>
     const text = await response.text(); // await waits for the promise to be resolved
@@ -34,8 +35,13 @@ async function writeContent() { // --> Promise
             element = document.createElement("h3");
         } else
             element = document.createElement("p");
+        
         element.textContent = line.replace(/^#+\s*/, '');
-        element.innerHTML = element.textContent.replace(/\*\*(.+?)\*\*/g, "<span class='bold'>$1</span>")
+
+        element.innerHTML = element.textContent.replace(/\*\*(.+?)\*\*/g, "<span class='bold'>$1</span>");
+        element.innerHTML = element.innerHTML.replace(/\*(.+?)\*/g, "<span class='italic'>$1</span>");
+        element.innerHTML = element.innerHTML.replace(/\_(.+?)\_/g, "<span class='underline'>$1</span>");
+
         content.appendChild(element);
     });
 }
@@ -106,6 +112,8 @@ $& whole matched string
 `$`` everything before
 $` everything after
 
+[...] ==> spread syntax, turns all into an array
+ 
 Async: returns a promise
 
 */
