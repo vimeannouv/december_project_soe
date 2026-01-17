@@ -54,7 +54,7 @@ p{
     color: var(--purple-color);
 }
 
-.sidebar-toggle-button{
+.sidebar .toggle-button{
     box-sizing: border-box;
     background-color: transparent;
     border-radius: 30%;

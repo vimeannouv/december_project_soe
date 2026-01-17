@@ -30,19 +30,21 @@ async function writeContent() { // --> Promise
 
     lines.forEach(line => {
         let element = null;
-        if (line.startsWith("#"))
+        if (line.startsWith("#")) {
             element = document.createElement("h3");
-        else
+        } else
             element = document.createElement("p");
-
         element.textContent = line.replace(/^#+\s*/, '');
+        element.innerHTML = element.textContent.replace(/\*\*(.+?)\*\*/g, "<span class='bold'>$1</span>")
         content.appendChild(element);
     });
 }
 
 function playNavigationLinkAnimation(ev) {
     const target = ev.target;
-    if (target.tagName != "A" || target.parentElement.parentElement.parentElement.id != "sidebar") 
+    if (target.tagName != "A") 
+        return
+    if (target.parentElement.parentElement.parentElement.id != "sidebar")
         return
 
     const li = target.parentElement;
@@ -63,11 +65,11 @@ function sidebarToggle(ev) {
     const target = ev.target;
     const content = document.getElementById("content");
     const sidebar = document.getElementById("sidebar")
-    if (!target.classList.contains("sidebar-toggle-button")) 
+    if (!target.classList.contains("toggle-button")) 
         return
     sidebar.classList.toggle("close");
     content.classList.toggle("fill");
-    target.classList.toggle("fill");
+    target.classList.toggle("close-mode");
 }
 
 function contentLoaded() {
@@ -93,6 +95,16 @@ regex:
 + ==> one or more
 \s ==> whitespace
 * ==> zero or more
+\* ==> makes "*" a literal (literal = appears as it is: a string)
+g ==> find all instances (flag)
+(.*?) ==> capture anything inside 
+. ==> any character except new line
+? ==> none greedy/lazy, matches as few as possible.
+
+$1 ==> captured group
+$& whole matched string
+`$`` everything before
+$` everything after
 
 Async: returns a promise
 
