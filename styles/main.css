@@ -134,3 +134,9 @@ p{
     background-size: cover;
     background-image: url("/assets/banner-design.png");
 }
+
+.banner .cube{
+    font-size: 40px;
+    color: var(--blue-color);
+    margin-bottom: 40px;
+}
