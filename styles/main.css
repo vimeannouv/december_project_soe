@@ -62,14 +62,15 @@ p{
 
 .sidebar .close-toggle{
     background-color: transparent;
-    border-radius: 100%;
+    border-radius: 30%;
     color: var(--purple-color);
     border: none;
-    font-size: 20px;
+    font-size: 30px;
     width: 54px;
     height: 54px;
     margin-left: 25px;
     margin-bottom: 5px;
+    transition: color 0.3s ease-in-out;
 }
 
 .sidebar li{
