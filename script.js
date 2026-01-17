@@ -61,6 +61,13 @@ function playNavigationLinkAnimation(ev) {
 
 function sidebarToggle(ev) {
     const target = ev.target;
+    const content = document.getElementById("content");
+    const sidebar = document.getElementById("sidebar")
+    if (!target.classList.contains("sidebar-toggle-button")) 
+        return
+    sidebar.classList.toggle("close");
+    content.classList.toggle("fill");
+    target.classList.toggle("fill");
 }
 
 function contentLoaded() {
