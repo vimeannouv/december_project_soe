@@ -132,7 +132,7 @@ p{
     padding-bottom: 100px;
     width: 100%;
     background-size: cover;
-    background-image: url("/assets/banner-design.png");
+    background-image: url("../assets/banner-design.png");
 }
 
 .banner .cube{
