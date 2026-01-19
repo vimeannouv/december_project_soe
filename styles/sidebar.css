@@ -2,11 +2,13 @@
     /* box */
     background-color: var(--sidebar-background-color);
     position: fixed;
+
     padding: 20px;
-    width: 100dvh;
-    height: 100vh;
     top: 0px;
-    padding: 20px;
+
+    width: 100%;
+    max-width: 100dvh;
+    height: 100vh;
 
     line-height: 50px;
     font-size: 20;
@@ -16,10 +18,9 @@
     transition: transform 0.5s ease-in-out;
 }
 
-@media (min-width: 768) { /* phones */
+@media (min-width: 768px) { /* pc / tablets */
     .sidebar{
         max-width: var(--sidebar-width);
-        width: 100%;
     }
 }
 
