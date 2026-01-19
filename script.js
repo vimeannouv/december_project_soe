@@ -21,31 +21,6 @@ function createNavigationLinks() {
         sidebarList.append(li);
     })
 }
-
-async function writeContent() { // --> Promise
-
-    const content = document.getElementById("content");
-    const response = await fetch("content.txt"); // --> promise<Response>
-    const text = await response.text(); // await waits for the promise to be resolved
-    const lines = text.split('\n');
-
-    lines.forEach(line => {
-        let element = null;
-        if (line.startsWith("#")) {
-            element = document.createElement("h3");
-        } else
-            element = document.createElement("p");
-        
-        element.textContent = line.replace(/^#+\s*/, '');
-
-        element.innerHTML = element.textContent.replace(/\*\*(.+?)\*\*/g, "<span class='bold'>$1</span>");
-        element.innerHTML = element.innerHTML.replace(/\*(.+?)\*/g, "<span class='italic'>$1</span>");
-        element.innerHTML = element.innerHTML.replace(/\_(.+?)\_/g, "<span class='underline'>$1</span>");
-
-        content.appendChild(element);
-    });
-}
-
 function playNavigationLinkAnimation(ev) {
     const target = ev.target;
     if (target.tagName != "A") 
@@ -79,8 +54,7 @@ function sidebarToggle(ev) {
 }
 
 function contentLoaded() {
-    writeContent()
-    .then(createNavigationLinks);
+    createNavigationLinks
 }
 
 function onClick(ev) {
