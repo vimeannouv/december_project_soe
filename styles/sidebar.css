@@ -1,7 +1,8 @@
 .sidebar{
     /* box */
     background-color: var(--sidebar-background-color);
-    width: var(--sidebar-width);
+    max-width: var(--sidebar-width);
+    width: 100%;
     position: fixed;
     padding: 20px;
     height: 100vh;
@@ -15,8 +16,6 @@
     transform: translateX(0);
     transition: transform 0.5s ease-in-out;
 }
-
-/* |~~ SIDE-BAR LIST STYLING ~~| */
 
 .sidebar ul{
     list-style: none;
