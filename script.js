@@ -1,20 +1,21 @@
 function createNavigationLinks() {
-    const headings = document.querySelectorAll(".content h3");
+    const headings = document.querySelectorAll(".content .module");
     const sidebar = document.getElementById("sidebar");
     const sidebarList = document.createElement("ul");
 
     sidebar.appendChild(sidebarList);
-    headings.forEach((h3, index) => {
-
-        if (!h3.id) 
-            h3.id = `heading-${index}`; // `${"..."} ==> string template`
+    headings.forEach((module, index) => {
+        
+        const h3 = module.querySelector("h3");
+        if (!module.id) 
+            module.id = `heading-${index}`; // `${"..."} ==> string template`
         
         console.log(h3.textContent);
         
         const li = document.createElement("li");
         const a = document.createElement("a");
 
-        a.href = `#${h3.id}`; // hyperlink reference. # means look for element
+        a.href = `#${module.id}`; // hyperlink reference. # means look for element
         a.textContent = h3.textContent.replace(/^Module \d+:\s*/, ''); // removes "module x" fromt the link
 
         li.appendChild(a);
@@ -54,7 +55,7 @@ function sidebarToggle(ev) {
 }
 
 function contentLoaded() {
-    createNavigationLinks
+    createNavigationLinks();
 }
 
 function onClick(ev) {
