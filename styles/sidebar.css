@@ -1,0 +1,77 @@
+.sidebar{
+    /* box */
+    background-color: var(--sidebar-background-color);
+    width: var(--sidebar-width);
+    position: fixed;
+    padding: 20px;
+    height: 100vh;
+    top: 0px;
+    padding: 20px;
+
+    line-height: 50px;
+    font-size: 20;
+    color: white;
+
+    transform: translateX(0);
+    transition: transform 0.5s ease-in-out;
+}
+
+/* |~~ SIDE-BAR LIST STYLING ~~| */
+
+.sidebar ul{
+    list-style: none;
+    margin-left: 0px;
+    padding: 0;
+}
+
+.sidebar .header{
+    display: flex;
+    color: var(--purple-color);
+}
+
+.sidebar .toggle-button{
+    box-sizing: border-box;
+    background-color: transparent;
+    border-radius: 30%;
+    color: var(--purple-color);
+    border: none;
+    font-size: 30px;
+    width: 54px;
+    height: 54px;
+    margin-left: 25px;
+    margin-bottom: 5px;
+    transform: translateX(0);
+    transition: 
+        color 0.3s ease-in-out,
+        transform 0.5s ease-in-out;
+}
+
+.sidebar li{
+    color: #61afef;
+    border: solid 1px #282c34;
+    border-left: none;
+    border-right: none;
+    background-color: #1d2025;
+}
+
+.sidebar a{
+    color: #61afef;
+    text-decoration: none;
+    padding: 25px;
+}
+
+.sidebar h1{
+    margin-bottom: 25px;
+}
+
+.sidebar.close{
+    transform: translateX(-100%);
+}
+
+.toggle-button.close-mode{
+    transform: translateX(200%);
+}
+
+.sidebar .toggle-button:hover{
+    color: #975da9;
+}
