@@ -22,11 +22,14 @@ function createNavigationLinks() {
         sidebarList.append(li);
     })
 }
+
 function playNavigationLinkAnimation(ev) {
     const target = ev.target;
     if (target.tagName != "A") 
         return
-    if (target.parentElement.parentElement.parentElement.id != "sidebar")
+
+    const isDescendantOfSidebar = target.parentElement.parentElement.parentElement.id == "sidebar"
+    if (!isDescendantOfSidebar)
         return
 
     const li = target.parentElement;
@@ -40,18 +43,40 @@ function playNavigationLinkAnimation(ev) {
 
     li.addEventListener("animationend", () => li.classList.remove("link-flash-animation"));
     h3.addEventListener("animationend", () => h3.classList.remove("content-h3-flash-animation"));
-    
+   
 }
 
-function sidebarToggle(ev) {
-    const target = ev.target;
+function toggleSidebar(ev) {
     const content = document.getElementById("content");
-    const sidebar = document.getElementById("sidebar")
-    if (!target.classList.contains("toggle-button")) 
-        return
+    const sidebar = document.getElementById("sidebar");
+    const toggleButton = document.getElementById("toggle-button"); 
     sidebar.classList.toggle("close");
     content.classList.toggle("fill");
-    target.classList.toggle("close-mode");
+    toggleButton.classList.toggle("close-mode");
+}
+
+function sidebarToggleOnButtonPressed(ev) {
+    const target = ev.target;
+    if (!target.classList.contains("toggle-button")) 
+        return
+    toggleSidebar(ev)
+}
+
+// mobile
+function closeSidebarOnLinkPressed(ev) {
+    const target = ev.target;
+    if (target.tagName != "A") 
+        return
+
+    const isDescendantOfSidebar = target.parentElement.parentElement.parentElement.id == "sidebar"
+    if (!isDescendantOfSidebar)
+        return
+
+    const onMobile = window.matchMedia("(max-width: 768px)").matches;
+    if (!onMobile) 
+        return
+    console.log("hi")
+    toggleSidebar(ev)
 }
 
 function contentLoaded() {
@@ -60,7 +85,10 @@ function contentLoaded() {
 
 function onClick(ev) {
     playNavigationLinkAnimation(ev)
-    sidebarToggle(ev)
+    sidebarToggleOnButtonPressed(ev)
+
+    // mobile
+    closeSidebarOnLinkPressed(ev)
 }
 
 document.addEventListener("DOMContentLoaded", contentLoaded); // fires when the HTML document has been completely loaded and parsed, so basically on start
