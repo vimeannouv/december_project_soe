@@ -3,9 +3,9 @@
     text-align: center;
     background-color: var(--content-background-color);
     width: 100%;
-    padding-right: 0;
-    padding-left: 250px;
-    padding-top: 0;
+    padding-left: 0px;
+    padding-right: 0px;
+    padding-top: 0px;
     transition: padding-left 0.5s ease-in-out;
 }
 
@@ -51,4 +51,10 @@
 
 .content.fill{
     padding-left: 0px;
+}
+
+@media (min-width: 768px) {
+    .content{
+        padding-left: 250px;
+    }
 }

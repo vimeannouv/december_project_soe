@@ -64,7 +64,6 @@ function onClick(ev) {
 }
 
 document.addEventListener("DOMContentLoaded", contentLoaded); // fires when the HTML document has been completely loaded and parsed, so basically on start
-
 document.addEventListener("click", onClick);
 /*
                ~~ notes ~~
