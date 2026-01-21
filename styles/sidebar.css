@@ -47,7 +47,6 @@
 }
 
 .sidebar li{
-    color: #61afef;
     border: solid 1px #282c34;
     border-left: none;
     border-right: none;
@@ -55,12 +54,13 @@
 }
 
 .sidebar a{
-    color: #61afef;
+    color: var(--blue-color);
     text-decoration: none;
     padding: 25px;
 }
 
 .sidebar h1{
+    color: var(--purple-color);
     margin-bottom: 25px;
     font-size: 40px;
 }

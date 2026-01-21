@@ -49,8 +49,10 @@ function playNavigationLinkAnimation(ev) {
 function toggleSidebar(ev) {
     const content = document.getElementById("content");
     const sidebar = document.getElementById("sidebar");
+    const footer = document.getElementById("footer");
     const toggleButton = document.getElementById("toggle-button"); 
     sidebar.classList.toggle("close");
+    footer.classList.toggle("fill")
     content.classList.toggle("fill");
     toggleButton.classList.toggle("close-mode");
 }
@@ -79,7 +81,7 @@ function closeSidebarOnLinkPressed(ev) {
     toggleSidebar(ev)
 }
 
-function contentLoaded() {
+function onContentLoaded() {
     createNavigationLinks();
 }
 
@@ -91,7 +93,7 @@ function onClick(ev) {
     closeSidebarOnLinkPressed(ev)
 }
 
-document.addEventListener("DOMContentLoaded", contentLoaded); // fires when the HTML document has been completely loaded and parsed, so basically on start
+document.addEventListener("DOMContentLoaded", onContentLoaded); // fires when the HTML document has been completely loaded and parsed, so basically on start
 document.addEventListener("click", onClick);
 /*
                ~~ notes ~~
