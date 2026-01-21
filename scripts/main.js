@@ -14,9 +14,14 @@ function createNavigationLinks() {
         
         const li = document.createElement("li");
         const a = document.createElement("a");
-
+        
         a.href = `#${module.id}`; // hyperlink reference. # means look for element
         a.textContent = h3.textContent.replace(/^Module \d+:\s*/, ''); // removes "module x" fromt the link
+
+        // custom scroll property
+        a.addEventListener("click", ev => {
+            ev.preventDefault() // a will no longer scroll to the heading on defaukt
+        })  
 
         li.appendChild(a);
         sidebarList.append(li);
@@ -52,7 +57,7 @@ function toggleSidebar(ev) {
     const footer = document.getElementById("footer");
     const toggleButton = document.getElementById("toggle-button"); 
     sidebar.classList.toggle("close");
-    footer.classList.toggle("fill")
+    footer.classList.toggle("fill");
     content.classList.toggle("fill");
     toggleButton.classList.toggle("close-mode");
 }
@@ -61,7 +66,7 @@ function sidebarToggleOnButtonPressed(ev) {
     const target = ev.target;
     if (!target.classList.contains("toggle-button")) 
         return
-    toggleSidebar(ev)
+    toggleSidebar(ev);
 }
 
 // mobile
@@ -77,20 +82,47 @@ function closeSidebarOnLinkPressed(ev) {
     const onMobile = window.matchMedia("(max-width: 768px)").matches;
     if (!onMobile) 
         return
-    console.log("hi")
-    toggleSidebar(ev)
+    console.log("hi");
+    toggleSidebar(ev);
+}
+
+function writeInCodeblock() {
+    const preformat_elements = document.querySelectorAll("pre");
+    preformat_elements.forEach(pre => {
+        const code = document.createElement("code");
+        code.className = pre.className
+        pre.appendChild(code)
+        
+        let gitApi = null;
+
+        gitApi = "https://api.github.com/repos/vimeannouv/december_project_SOE/contents/index.html"
+
+        const repository = fetch(gitApi, {
+            headers: {
+                "Authorization": "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"
+            }
+        });
+        repository.then(resp => resp.json())
+        .then(json => json.content)
+        .then(src => atob(src)) //atob decodes base64 strs
+        .then(decoded_src => {
+            code.textContent = decoded_src
+            Prism.highlightElement(code);
+        })
+    });
 }
 
 function onContentLoaded() {
     createNavigationLinks();
+    writeInCodeblock();
 }
 
 function onClick(ev) {
-    playNavigationLinkAnimation(ev)
-    sidebarToggleOnButtonPressed(ev)
+    playNavigationLinkAnimation(ev);
+    sidebarToggleOnButtonPressed(ev);
 
     // mobile
-    closeSidebarOnLinkPressed(ev)
+    closeSidebarOnLinkPressed(ev);
 }
 
 document.addEventListener("DOMContentLoaded", onContentLoaded); // fires when the HTML document has been completely loaded and parsed, so basically on start

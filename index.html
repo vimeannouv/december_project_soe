@@ -2,6 +2,12 @@
     <head>
             <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- mobile-->
 
+            <!--prism-->
+            <script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/prism.js"></script>
+            <link href="https://cdn.jsdelivr.net/npm/prism-theme-one-dark@1.0.0/prism-onedark.css" rel="stylesheet">
+            <link href="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/plugins/line-numbers/prism-line-numbers.css" rel="stylesheet" />
+            <script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
+
             <!-- js and css link -->
             <link rel="stylesheet" type="text/css" href="styles/global.css">
             <link rel="stylesheet" type="text/css" href="styles/content.css">
@@ -11,15 +17,15 @@
             <script src="scripts/main.js"></script> 
             <script src="scripts/weather-api.js"></script> 
 
-            <!-- prism -->
-
-            <link rel="stylesheet" type="text/css" href="lib/prism/prism.css">
-            <script src="lib/prism/prism.js"></script>
-
             <!-- lexend font from google font -->
             <link rel="preconnect" href="https://fonts.googleapis.com">
             <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
             <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=Lexend:wght@100..900&display=swap" rel="stylesheet">
+
+            <!-- jetbrains mono from google font -->
+            <link rel="preconnect" href="https://fonts.googleapis.com">
+            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+            <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Lexend:wght@100..900&display=swap" rel="stylesheet">
 
             <script src="https://kit.fontawesome.com/274af6286a.js" crossorigin="anonymous"></script>
     </head>
@@ -48,11 +54,7 @@
                     <p>Below is the code</p>
                     <details>
                         <summary>HTML Code</summary>
-                        <pre>
-                            <code>
-
-                            </code>
-                        </pre>
+                        <pre class="line-numbers language-html"></pre>
                     </details>
                 </section>
 

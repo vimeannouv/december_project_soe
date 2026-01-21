@@ -53,6 +53,24 @@
     margin-bottom: 40px;
 }
 
+pre[class*="language-"]{ /* if includes "language-" in class tag */
+    box-sizing: border-box;
+    background-color:#22262d;
+    max-width: 80%;
+    width: auto;
+    padding-left: 40px;
+    margin: auto;
+    border-radius: 20px;
+    font-size: 15px;
+}
+
+pre[class*="language-"] code, pre[class*="language-"] * {
+    font-family: "Jetbrains Mono", monospace !important; /* !important means override always */
+    line-height: 1.8em;
+}
+/* Why this is needed: prisms add colour highlights using spans.
+ The font should apply to every element, that way it targets everything in the code element */
+
 
 @media (min-width: 768px) {
     .content{

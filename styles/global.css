@@ -1,4 +1,5 @@
 @import url("fonts.googleapis.com/css2?family=Lexend");
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap');
 
 html, body{ 
     /* Variables */
@@ -47,6 +48,10 @@ summary{
 
 .italic{
     font-style: italic;
+}
+
+summary{
+    margin-bottom: 60px;
 }
 
 .underline{
