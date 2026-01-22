@@ -2,9 +2,11 @@
 
 import { buffer } from "stream/consumers";
 
+const files = ["index.html", "scripts/main.js"]
+
 export async function handler() {
     const key = process.env.GITHUB_TOKEN;
-    const fileName = "index.html";
+    const fileName = "scripts/main.js";
     const response = await fetch(`https://api.github.com/repos/vimeannouv/december_project_SOE/contents/${fileName}`, {
         headers: {
             Authorization: `token ${key}`,
