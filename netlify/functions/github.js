@@ -7,7 +7,7 @@ export async function handler() {
     const fileName = "index.html";
     const response = await fetch(`https://api.github.com/repos/vimeannouv/december_project_SOE/contents/${fileName}`, {
         headers: {
-            Authorization: `Bearer ${key}`,
+            Authorization: `token ${key}`,
             Accept: "application/vnd.github+json"
         }
     });

@@ -89,15 +89,12 @@ function writeInCodeblock() {
         pre.appendChild(code)
 
         const endpoint = "/.netlify/functions/github";
-
-        const repository = fetch(endpoint);
-        repository.then(resp => resp.json())
-        .then(json => json.content)
-        .then(src => atob(src)) //atob decodes base64 strs
-        .then(decoded_src => {
-            code.textContent = decoded_src
+        
+        fetch(endpoint)
+        .then(content => {
+            code.textContent = content;
             Prism.highlightElement(code);
-        })
+        });
     });
 }
 
