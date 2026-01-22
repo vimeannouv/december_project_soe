@@ -1,4 +1,5 @@
 .sidebar{
+    z-index: 1000; /* prioritise sidebar over the prism code blocks */
     box-sizing: border-box;
     background-color: var(--sidebar-background-color);
     position: fixed;

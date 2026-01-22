@@ -18,11 +18,6 @@ function createNavigationLinks() {
         a.href = `#${module.id}`; // hyperlink reference. # means look for element
         a.textContent = h3.textContent.replace(/^Module \d+:\s*/, ''); // removes "module x" fromt the link
 
-        // custom scroll property
-        a.addEventListener("click", ev => {
-            ev.preventDefault() // a will no longer scroll to the heading on defaukt
-        })  
-
         li.appendChild(a);
         sidebarList.append(li);
     })
