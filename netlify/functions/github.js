@@ -14,7 +14,7 @@ export async function handler() {
     if (!response.ok)
         return {
             statusCode: response.status,
-            body: JSON.stringify({error: `failed fetching ${fileName} from github. status: ${response.status}. key ${key}`})
+            body: JSON.stringify({error: `failed fetching ${fileName} from github. status: ${response.status}.`})
         };
 
     const data = await response.json();
