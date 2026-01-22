@@ -3,7 +3,7 @@
 import { buffer } from "stream/consumers";
 
 export async function handler() {
-    const key = process.env.GITHUB_KEY;
+    const key = process.env.GITHUB_TOKEN;
     const fileName = "index.html";
     const response = await fetch(`https://api.github.com/repos/vimeannouv/december_project_SOE/contents/${fileName}`, {
         headers: {
