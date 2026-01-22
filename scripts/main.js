@@ -87,11 +87,10 @@ function writeInCodeblock() {
         const code = document.createElement("code");
         code.className = pre.className
         pre.appendChild(code)
-        
-        let gitApi = null;
-        gitApi = "https://api.github.com/repos/vimeannouv/december_project_SOE/contents/index.html"
 
-        const repository = fetch(gitApi);
+        const endpoint = "/.netlify/functions/github";
+
+        const repository = fetch(endpoint);
         repository.then(resp => resp.json())
         .then(json => json.content)
         .then(src => atob(src)) //atob decodes base64 strs
