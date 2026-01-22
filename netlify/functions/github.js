@@ -2,7 +2,7 @@ const files = ["index.html", "scripts/main.js"];
 
 export async function handler() {
     const key = process.env.GITHUB_TOKEN;
-    const output = {}
+    const output = {};
 
     for (const fileName of files) {
         const response = await fetch(`https://api.github.com/repos/vimeannouv/december_project_SOE/contents/${fileName}`, {
