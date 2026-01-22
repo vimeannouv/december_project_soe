@@ -82,20 +82,17 @@ function closeSidebarOnLinkPressed(ev) {
 }
 
 function writeInCodeblock() {
-    const preformat_elements = document.querySelectorAll("pre");
-    preformat_elements.forEach(pre => {
-        const code = document.createElement("code");
-        code.className = pre.className
-        pre.appendChild(code)
+    const pre = document.getElementById("index.html-codeblock");
+    const code = document.createElement("code");
+    code.className = pre.className
+    pre.appendChild(code)
 
-        const endpoint = "/.netlify/functions/github";
-
-        fetch(endpoint)
-        .then(res => res.text())
-        .then(content => {
-            code.textContent = content;
-            Prism.highlightElement(code);
-        });
+    const endpoint = "/.netlify/functions/github";
+    fetch(endpoint)
+    .then(res => res.text())
+    .then(content => {
+        code.textContent = content;
+        Prism.highlightElement(code);
     });
 }
 
