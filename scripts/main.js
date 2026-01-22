@@ -126,11 +126,13 @@ g ==> find all instances (flag)
 (.*?) ==> capture anything inside 
 . ==> any character except new line
 ? ==> none greedy/lazy, matches as few as possible.
-
 $1 ==> captured group
-$& whole matched string
-`$`` everything before
-$` everything after
+`$`` ==> everything before
+$` ==> everything after-end
+$ ==> at the end
+
+replacement patterns:
+$& ==> whole matched string
 
 [...] ==> spread syntax, turns all into an array
  
