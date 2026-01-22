@@ -1,4 +1,8 @@
-export async function handler(ev) {
+// @ts-check
+
+import { buffer } from "stream/consumers";
+
+export async function handler() {
     const key = process.env.GITHUB_KEY;
     const fileName = "index.html";
     const response = await fetch(`https://api.github.com/repos/vimeannouv/december_project_SOE/contents/${fileName}`, {
@@ -14,7 +18,8 @@ export async function handler(ev) {
         };
 
     const data = await response.json();
-    const content = atob(data.content);
+    const content = Buffer.from(data.content, "base64").toString("utf-8"); // git encodes content into base64.
+    //buffer stores bytes from content, tostring utf-8 interprets it properly.
     return {
         statusCode: 200,
         body: content,
