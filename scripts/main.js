@@ -89,8 +89,9 @@ function writeInCodeblock() {
         pre.appendChild(code)
 
         const endpoint = "/.netlify/functions/github";
-        
+
         fetch(endpoint)
+        .then(res => res.text())
         .then(content => {
             code.textContent = content;
             Prism.highlightElement(code);
