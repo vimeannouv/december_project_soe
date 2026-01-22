@@ -84,8 +84,8 @@ function closeSidebarOnLinkPressed(ev) {
 function writeInCodeblock() {
     const pre = document.getElementById("index.html-codeblock");
     const code = document.createElement("code");
-    code.className = pre.className
-    pre.appendChild(code)
+    code.className = pre.className;
+    pre.appendChild(code);
 
     const endpoint = "/.netlify/functions/github";
     fetch(endpoint)
