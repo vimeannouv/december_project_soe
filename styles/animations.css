@@ -4,7 +4,7 @@
     animation: click-flash 0.3s ease-in-out;
 }
 
-.content-h3-flash-animation{
+.content-flash-animation{
     --color-start: #484c55; 
     --color-end: var(--content-background-color);
     animation: click-flash 1.7s ease-out;

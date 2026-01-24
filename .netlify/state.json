@@ -1,0 +1,20 @@
+{
+	"geolocation": {
+		"data": {
+			"city": "Sydney",
+			"country": {
+				"code": "AU",
+				"name": "Australia"
+			},
+			"subdivision": {
+				"code": "NSW",
+				"name": "New South Wales"
+			},
+			"timezone": "Australia/Sydney",
+			"latitude": -33.8726,
+			"longitude": 151.0387,
+			"postalCode": "2141"
+		},
+		"timestamp": 1769247644195
+	}
+}

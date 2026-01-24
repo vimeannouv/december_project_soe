@@ -1,4 +1,6 @@
+
 function createNavigationLinks() {
+
     const headings = document.querySelectorAll(".content .module");
     const sidebar = document.getElementById("sidebar");
     const sidebarList = document.createElement("ul");
@@ -18,33 +20,32 @@ function createNavigationLinks() {
         a.href = `#${module.id}`; // hyperlink reference. # means look for element
         a.textContent = h3.textContent.replace(/^Module \d+:\s*/, ''); // removes "module x" fromt the link
 
+        function playNavigationLinkAnimation() {
+            const li = a.parentElement;
+            // play anims
+            li.classList.add("link-flash-animation");
+            module.classList.add("content-flash-animation");
+        
+            li.addEventListener("animationend", () => li.classList.remove("link-flash-animation"));
+            h3.addEventListener("animationend", () => h3.classList.remove("content-flash-animation"));
+        }
+
+        a.addEventListener("click", () => {
+            playNavigationLinkAnimation();
+
+            // mobile guard
+            const onMobile = window.matchMedia("(max-width: 768px)").matches;
+            if (!onMobile) 
+                return
+            // mobile only
+            toggleSidebar()
+        })
+
         li.appendChild(a);
         sidebarList.append(li);
     })
 }
 
-function playNavigationLinkAnimation(ev) {
-    const target = ev.target;
-    if (target.tagName != "A") 
-        return
-
-    const isDescendantOfSidebar = target.parentElement.parentElement.parentElement.id == "sidebar"
-    if (!isDescendantOfSidebar)
-        return
-
-    const li = target.parentElement;
-
-    const referenceElementId = target.getAttribute("href").substring(1); // getAttribute returns #element, using the attribute 'href' outputs the link.
-    const h3 = document.getElementById(referenceElementId);
-
-    // play anims
-    li.classList.add("link-flash-animation");
-    h3.classList.add("content-h3-flash-animation");
-
-    li.addEventListener("animationend", () => li.classList.remove("link-flash-animation"));
-    h3.addEventListener("animationend", () => h3.classList.remove("content-h3-flash-animation"));
-   
-}
 
 function toggleSidebar(ev) {
     const content = document.getElementById("content");
@@ -61,23 +62,6 @@ function sidebarToggleOnButtonPressed(ev) {
     const target = ev.target;
     if (!target.classList.contains("toggle-button")) 
         return
-    toggleSidebar(ev);
-}
-
-// mobile
-function closeSidebarOnLinkPressed(ev) {
-    const target = ev.target;
-    if (target.tagName != "A") 
-        return
-
-    const isDescendantOfSidebar = target.parentElement.parentElement.parentElement.id == "sidebar"
-    if (!isDescendantOfSidebar)
-        return
-
-    const onMobile = window.matchMedia("(max-width: 768px)").matches;
-    if (!onMobile) 
-        return
-    console.log("hi");
     toggleSidebar(ev);
 }
 
@@ -102,11 +86,7 @@ function onContentLoaded() {
 }
 
 function onClick(ev) {
-    playNavigationLinkAnimation(ev);
     sidebarToggleOnButtonPressed(ev);
-
-    // mobile
-    closeSidebarOnLinkPressed(ev);
 }
 
 document.addEventListener("DOMContentLoaded", onContentLoaded); // fires when the HTML document has been completely loaded and parsed, so basically on start

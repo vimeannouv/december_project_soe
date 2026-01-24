@@ -19,5 +19,8 @@
   "description": "",
   "devDependencies": {
     "@types/node": "^25.0.10"
+  },
+  "dependencies": {
+    "netlify-cli": "^23.13.5"
   }
 }
