@@ -85,7 +85,7 @@ pre[class*="language-"] code, pre[class*="language-"] * {
     flex-direction: column;
 }
 
-.weather-app h2{
+.weather-app h1{
     margin-top: 20px;
 }
 
@@ -93,7 +93,7 @@ pre[class*="language-"] code, pre[class*="language-"] * {
     margin-top: 50px;
     display: flex;
     flex-direction: row;
-    align-items: center;
+    align-items: top;
     margin-bottom: 20px;
 }
 
@@ -102,10 +102,60 @@ pre[class*="language-"] code, pre[class*="language-"] * {
 }
 
 .current-temp{
-     border-right: solid 6px #121417;
+     border-right: solid 3px #393d44;
 }
 
+.current-temp .display{
+    display: flex;
+    box-sizing: border-box;
+    flex-direction: row;
+    justify-content: space-between;
+    align-content: center;
+}
+
+.current-temp .rain{
+    font-size: 60px;
+    margin-right: 45px;
+    padding-top: 20px;
+    text-decoration: none;
+}
+
+.weather-app .fa-solid.fa-sun{
+    color: #eccc68;
+}
+.weather-app .fa-solid.fa-cloud-rain{
+    color: #84c3f8;
+}
+
+.current-temp .date{
+    font-size: 17px;
+    text-align: left;
+    margin-left: 45px;
+    margin-top: 0px;
+    text-decoration: none;
+    color: var(--orange-color);
+}
+    
 .current-temp .temperature{
+    font-size: 75px;
+    margin-top: 40px;
+    text-align: left;
+    margin-left: 45px;
+    text-decoration: none;
+}
+
+.scroll-container{
+    margin-top: 40px;
+    overflow-x: auto;
+    overflow-y: auto;
+    height: 10em;
+    box-sizing: border-box;
+    margin-right: 100px;
+    width: 100%;
+}
+
+.scroll-container li{
+    list-style: none;
 }
 
 @media (min-width: 768px) {
