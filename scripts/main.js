@@ -1,4 +1,3 @@
-
 function createNavigationLinks() {
 
     const headings = document.querySelectorAll(".content .module");
@@ -37,6 +36,7 @@ function createNavigationLinks() {
             const onMobile = window.matchMedia("(max-width: 768px)").matches;
             if (!onMobile) 
                 return
+
             // mobile only
             toggleSidebar()
         })
@@ -45,7 +45,6 @@ function createNavigationLinks() {
         sidebarList.append(li);
     })
 }
-
 
 function toggleSidebar(ev) {
     const content = document.getElementById("content");
@@ -73,11 +72,12 @@ function writeInCodeblock() {
 
     const endpoint = "/.netlify/functions/github";
     fetch(endpoint)
-    .then(res => res.text())
-    .then(content => {
-        code.textContent = content;
+    .then(res => res.json())
+    .then(files => {
+        code.textContent = files["index.html"];
         Prism.highlightElement(code);
-    });
+    })
+    .catch(reason => {console.log(reason)});
 }
 
 function onContentLoaded() {

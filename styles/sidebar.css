@@ -68,6 +68,7 @@
 
 .sidebar.close{
     transform: translateX(-100%);
+    
 }
 
 .toggle-button.close-mode{

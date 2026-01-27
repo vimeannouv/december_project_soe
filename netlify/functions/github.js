@@ -2,6 +2,7 @@ const files = ["index.html", "scripts/main.js"];
 
 export async function handler() {
     const key = process.env.GITHUB_TOKEN;
+
     const output = {};
 
     for (const fileName of files) {
@@ -11,20 +12,24 @@ export async function handler() {
                 Accept: "application/vnd.github+json"
             }
         });
-        if (!response.ok)
-            return {
+
+        if (!response.ok) {
+           output[fileName] = {
                 statusCode: response.status,
                 body: JSON.stringify({error: `failed fetching ${fileName} from github. status: ${response.status}.`})
             };
+            continue
+        }
 
         const data = await response.json();
         const content = Buffer.from(data.content, "base64").toString("utf-8"); // git encodes content into base64.
         //buffer stores bytes from content, tostring utf-8 interprets it properly.
         output[fileName] = content;
     }
+
     return {
         statusCode: 200,
         body: JSON.stringify(output),
-        headers: {"Content-Type": "text/html"}
+        headers: {"Content-Type": "application/json"}
     }
-}
+}  

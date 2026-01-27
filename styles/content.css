@@ -17,6 +17,7 @@
 .content p, summary, .file-name{
     margin-right: 100px;
     margin-left: 100px;
+    overflow-wrap: break-word;
 }
 
 .content h1{
@@ -72,6 +73,40 @@ pre[class*="language-"] code, pre[class*="language-"] * {
 /* Why this is needed: prisms add colour highlights using spans.
  The font should apply to every element, that way it targets everything in the code element */
 
+/* weather app */
+
+.weather-app{
+    background: #22262d;
+    width: 80%;
+    margin: auto;
+    border-radius: 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+}
+
+.weather-app h2{
+    margin-top: 20px;
+}
+
+.temperature-info{
+    margin-top: 50px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.current-temp, .forecast-temp{
+    flex: 1;
+}
+
+.current-temp{
+     border-right: solid 6px #121417;
+}
+
+.current-temp .temperature{
+}
 
 @media (min-width: 768px) {
     .content{
