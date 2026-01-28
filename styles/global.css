@@ -18,6 +18,10 @@ html, body{
     font-size: 19px;
 }
 
+.hidden{
+    display: none;
+}
+
 .layout{
     box-sizing: border-box; /* this makes it very easy for side-by-side panels. the * means apply to all elements. */
     display: flex; /* stands for flexible box layout. */

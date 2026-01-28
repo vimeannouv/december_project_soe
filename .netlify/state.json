@@ -11,11 +11,11 @@
 				"name": "New South Wales"
 			},
 			"timezone": "Australia/Sydney",
-			"latitude": -33.8672,
-			"longitude": 151.1997,
-			"postalCode": "2000"
+			"latitude": -33.8375,
+			"longitude": 151.21,
+			"postalCode": "2060"
 		},
-		"timestamp": 1769490024957
+		"timestamp": 1769576459487
 	},
 	"siteId": "fd5867d8-a0f4-4e6e-987f-43a8dad0e897"
 }

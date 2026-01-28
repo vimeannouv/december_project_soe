@@ -17,18 +17,25 @@ function convertTo12Hour(timeString) {
 }
 
 async function writeWeather(ev) {
+
     const currentTempDisplay = document.querySelector(".current-temp .temperature");
     const currentDateDisplay = document.querySelector(".current-temp .date");
-    const scrollboxList = document.querySelector(".forecast-temp .scroll-container ul");
+
+    const averageTempStatDisplay = document.querySelector(".forecast-container .average-temp .stat");
+    const averagePrecipStatDisplay = document.querySelector(".forecast-container .average-precipitation .stat");
+    const maxTempStatDisplay = document.querySelector(".forecast-container .max-temp .stat");
+
     const response = await fetch("https://api.open-meteo.com/v1/forecast?latitude=-33.8974&longitude=150.9345&hourly=temperature_2m,rain&current=temperature_2m,rain&timezone=auto&forecast_days=1");
 
     try {
         if (!response.ok) 
             throw new Error(response.status);
-
-        // current weather
         const content = await response.json();
+
+        // units
         const celciusUnit = content.current_units.temperature_2m;
+        const precipUnit = content.current_units.rain
+        // current weather
 
         const currentTemp = content.current.temperature_2m;
         const currentRain = content.current.rain;
@@ -38,26 +45,48 @@ async function writeWeather(ev) {
 
         // current date of weather
         currentDateDisplay.textContent = `${reorderDate(currentDateList[0])} at ${convertTo12Hour(currentDateList)}`;
-
         currentTempDisplay.textContent = currentTemp + celciusUnit;
 
-        // forcasted weather
-        for (let i = 0; i < content.hourly.temperature_2m.length; i++) {
-            const date = content.hourly.time[i];
-            const temp = content.hourly.temperature_2m[i];
-            const rain = content.hourly.rain[i]; 
-            
-            const time = convertTo12Hour(date);
-            const li = document.createElement("li");
-            const p = document.createElement("p");
-            p.innerHTML = `<span class="fa-solid fa-cloud-rain"></span> ${time}: <span class="bold">${temp + celciusUnit}</span>`;
-            li.appendChild(p);
-            scrollboxList.append(li);
-        }
+        // forecasted weather
+
+        // average temp
+        const hourlyTemps = content.hourly.temperature_2m;
+        const averageTemp = hourlyTemps.reduce((previous, current) => previous + current) / hourlyTemps.length;
+        averageTempStatDisplay.textContent = averageTemp.toFixed(1) + celciusUnit; // 1 dp
+        // max temp
+
+        const maxTemp = Math.max(...hourlyTemps);
+        maxTempStatDisplay.textContent = maxTemp + celciusUnit;
+
+        // average precip
+        const hourlyPrecips = content.hourly.rain;
+        const averagePrecip = hourlyPrecips.reduce((previous, current) => previous + current) / hourlyPrecips.length;
+        averagePrecipStatDisplay.textContent = averagePrecip.toFixed(1) + precipUnit;
+
+
 
     } catch(error) {
         console.log(error)
     }
 }
 
-document.addEventListener("DOMContentLoaded", ev => writeWeather(ev))
+function setVisibleForStatDisplayLabels(bool) {
+    const statDisplayLabels = document.querySelectorAll(".forecast-container .stat-box .label");
+    for (const label of statDisplayLabels) {
+        
+        if (bool) {
+            label.classList.remove("hidden");
+        } else {
+            label.classList.add("hidden");
+        }
+
+    }
+}
+
+function resized(ev) {
+    const onMobile = window.matchMedia("(max-width: 768px)");
+    setVisibleForStatDisplayLabels(!onMobile.matches);
+}
+
+document.addEventListener("DOMContentLoaded", ev => writeWeather(ev));
+window.addEventListener("resize", ev => resized(ev))

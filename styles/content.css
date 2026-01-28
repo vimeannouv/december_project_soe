@@ -92,39 +92,41 @@ pre[class*="language-"] code, pre[class*="language-"] * {
 .temperature-info{
     margin-top: 50px;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: top;
     margin-bottom: 20px;
 }
 
 .current-temp, .forecast-temp{
-    flex: 1;
+    flex: .7;
 }
 
 .current-temp{
-     border-right: solid 3px #393d44;
-}
-
-.current-temp .display{
-    display: flex;
-    box-sizing: border-box;
-    flex-direction: row;
-    justify-content: space-between;
-    align-content: center;
-}
-
-.current-temp .rain{
-    font-size: 60px;
-    margin-right: 45px;
-    padding-top: 20px;
-    text-decoration: none;
+    border-right: solid 3px #393d44;
 }
 
 .weather-app .fa-solid.fa-sun{
     color: #eccc68;
 }
-.weather-app .fa-solid.fa-cloud-rain{
+.current-temp .display{
+    display: flex;
+    box-sizing: border-box;
+    flex-direction: column;
+    justify-content: space-between;
+    align-content: center;
+}
+.weather-app .fa-cloud-rain, .fa-droplet{
     color: #84c3f8;
+}
+
+.weather-app .fa-temperature-full{
+    color: #e78d6f;
+}   
+
+.current-temp .rain{
+    font-size: 75px;
+    margin-left: 45px;
+    text-decoration: none;
 }
 
 .current-temp .date{
@@ -139,23 +141,52 @@ pre[class*="language-"] code, pre[class*="language-"] * {
 .current-temp .temperature{
     font-size: 75px;
     margin-top: 40px;
+    margin-bottom: 0px;
     text-align: left;
     margin-left: 45px;
     text-decoration: none;
 }
 
-.scroll-container{
-    margin-top: 40px;
+.forecast-container{
+    display: flex;
+    flex-direction: column;
     overflow-x: auto;
-    overflow-y: auto;
-    height: 10em;
     box-sizing: border-box;
-    margin-right: 100px;
-    width: 100%;
+    padding-left: 20px;
+    padding-right: 20px;
 }
 
-.scroll-container li{
-    list-style: none;
+.forecast-container .stat-box{
+    margin-top: 20px;
+    flex: 1;
+    background: #1b1e24;
+    height: 300px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.forecast-container .stat-box .icon { 
+    margin-top: 20px;
+    font-size: 50px;
+    margin-bottom: 20px;
+    margin-left: 20px;
+}
+
+.forecast-container .stat-box p{
+    max-width: auto;
+    width: 100%;
+    margin-left: 20px;
+    padding-left: 0px;
+}
+
+.forecast-container .stat-box .stat{
+    flex: 1;
+    text-align: right;
+    margin-left: 0px;
+    padding-left: 0px;
+    margin-right: max(20px, 0px);
 }
 
 @media (min-width: 768px) {
