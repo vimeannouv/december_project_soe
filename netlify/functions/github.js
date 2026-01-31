@@ -1,35 +1,41 @@
 const files = ["index.html", "scripts/main.js"];
 
 export async function handler() {
-    const key = process.env.GITHUB_TOKEN;
+  const key = process.env.GITHUB_TOKEN;
+  
+  const output = {};
 
-    const output = {};
+  for (const fileName of files) {
+    const response = await fetch(
+      `https://api.github.com/repos/vimeannouv/december_project_SOE/contents/${fileName}`,
+      {
+        headers: {
+          Authorization: `token ${key}`,
+          Accept: "application/vnd.github+json",
+        },
+      },
+    );
 
-    for (const fileName of files) {
-        const response = await fetch(`https://api.github.com/repos/vimeannouv/december_project_SOE/contents/${fileName}`, {
-            headers: {
-                Authorization: `token ${key}`,
-                Accept: "application/vnd.github+json"
-            }
-        });
-
-        if (!response.ok) {
-           output[fileName] = {
-                statusCode: response.status,
-                body: JSON.stringify({error: `failed fetching ${fileName} from github. status: ${response.status}.`})
-            };
-            continue
-        }
-
-        const data = await response.json();
-        const content = Buffer.from(data.content, "base64").toString("utf-8"); // git encodes content into base64.
-        //buffer stores bytes from content, tostring utf-8 interprets it properly.
-        output[fileName] = content;
+    if (!response.ok) {
+      output[fileName] = {
+        statusCode: response.status,
+        body: JSON.stringify({
+          error: `failed fetching ${fileName} from github. status: ${response.status}.`,
+        }),
+      };
+      console.log(`the response for ${fileName} is not okay`)
+      continue;
     }
 
-    return {
-        statusCode: 200,
-        body: JSON.stringify(output),
-        headers: {"Content-Type": "application/json"}
-    }
-}  
+    const data = await response.json();
+    const content = Buffer.from(data.content, "base64").toString("utf-8"); // git encodes content into base64.
+    //buffer stores bytes from content, tostring utf-8 interprets it properly.
+    output[fileName] = content;
+  }
+
+  return {
+    statusCode: 200,
+    body: JSON.stringify(output),
+    headers: { "Content-Type": "application/json" },
+  };
+}

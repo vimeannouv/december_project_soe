@@ -1,77 +1,92 @@
 @import url("fonts.googleapis.com/css2?family=Lexend");
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap");
 
-html, body{ 
-    /* Variables */
-    --sidebar-background-color: #1d2025;
-    --content-background-color: #282c34;
-    --purple-color: #c678dd; 
-    --blue-color: #61afef; 
-    --rose-color: #E06C75; 
-    --orange-color: #D19A66; 
-    
-    --sidebar-width: 320px;
-    
-    scroll-behavior: smooth;
-    min-height: 100%;
-    height: 100%;
-    font-size: 19px;
+html,
+body {
+  /* Variables */
+  --sidebar-background-color: #1d2025;
+  --content-background-color: #282c34;
+  --purple-color: #c678dd;
+  --blue-color: #61afef;
+  --rose-color: #e06c75;
+  --orange-color: #d19a66;
+
+  --sidebar-width: 320px;
+
+  scroll-behavior: smooth;
+  min-height: 100%;
+  height: 100%;
+  font-size: 19px;
 }
 
-.hidden{
-    display: none;
+.hidden {
+  display: none;
 }
 
-.layout{
-    box-sizing: border-box; /* this makes it very easy for side-by-side panels. the * means apply to all elements. */
-    display: flex; /* stands for flexible box layout. */
-    align-items: stretch; /* makes both panels the same height */
-    min-height: 100vh;
+a {
+  color: var(--blue-color);
+  text-decoration: none;
+  padding: 25px;
 }
 
-*{
-    margin: 0;
-    font-family: "Lexend", sans-serif;
-    color: #fdfdfd;
+.layout {
+  box-sizing: border-box; /* this makes it very easy for side-by-side panels. the * means apply to all elements. */
+  display: flex; /* stands for flexible box layout. */
+  align-items: stretch; /* makes both panels the same height */
+  min-height: 100vh;
 }
 
-p, summary{
-    text-align: left;
-    line-height: 36px;
+* {
+  margin: 0;
+  font-family: "Lexend", sans-serif;
+  color: #fdfdfd;
 }
 
-summary{
-    color: var(--blue-color);
-    text-align: left;
+p,
+summary {
+  text-align: left;
+  line-height: 36px;
 }
 
-.bold{
-    color: #D19A66;
-    font-weight: bold;
-}   
-
-.italic{
-    font-style: italic;
+summary {
+  color: var(--blue-color);
+  text-align: left;
 }
 
-summary{
-    margin-bottom: 60px;
+.bold {
+  color: #d19a66;
+  font-weight: bold;
 }
 
-.underline{
-    text-decoration: underline;
-    text-decoration-color: var(--orange-color);
+.italic {
+  font-style: italic;
 }
 
-footer{
-    background-color: #22262d;
-    height: 200px;
-    width: auto;
-    padding-left: var(--sidebar-width); 
-    transition:
-     padding 0.5s ease-in-out
+summary {
+  margin-bottom: 60px;
 }
 
-.fill{
-    padding-left: 0px;
+.underline {
+  text-decoration: underline;
+  text-decoration-color: var(--orange-color);
+}
+
+.blue {
+  color: var(--blue-color);
+}
+
+footer {
+  background-color: #22262d;
+  height: 200px;
+  width: auto;
+  padding-left: var(--sidebar-width);
+  transition: padding 0.5s ease-in-out;
+}
+
+details {
+    margin-bottom: 30px;
+}
+
+.fill {
+  padding-left: 0px;
 }

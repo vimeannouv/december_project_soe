@@ -1,129 +1,225 @@
 <html>
-    <head>
-            <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- mobile-->
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- mobile-->
 
-            <!--prism-->
-            <script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/prism.js"></script>
-            <link href="https://cdn.jsdelivr.net/npm/prism-theme-one-dark@1.0.0/prism-onedark.css" rel="stylesheet">
-            <link href="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/plugins/line-numbers/prism-line-numbers.css" rel="stylesheet" />
-            <script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
+    <!--prism-->
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/prism.js"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/prism-theme-one-dark@1.0.0/prism-onedark.css"
+      rel="stylesheet" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/plugins/line-numbers/prism-line-numbers.css"
+      rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
 
-            <!-- js and css link -->
-            <link rel="stylesheet" type="text/css" href="styles/global.css">
-            <link rel="stylesheet" type="text/css" href="styles/content.css">
-            <link rel="stylesheet" type="text/css" href="styles/sidebar.css">
-            <link rel="stylesheet" type="text/css" href="styles/animations.css">
+    <!-- js and css link -->
+    <link rel="stylesheet" type="text/css" href="styles/global.css" />
+    <link rel="stylesheet" type="text/css" href="styles/content.css" />
+    <link rel="stylesheet" type="text/css" href="styles/sidebar.css" />
+    <link rel="stylesheet" type="text/css" href="styles/animations.css" />
 
-            <script src="scripts/main.js"></script> 
-            <script src="scripts/weather-api.js"></script> 
+    <script src="scripts/main.js"></script>
+    <script src="scripts/weather-api.js"></script>
 
-            <!-- lexend font from google font -->
-            <link rel="preconnect" href="https://fonts.googleapis.com">
-            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-            <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=Lexend:wght@100..900&display=swap" rel="stylesheet">
+    <!-- lexend font from google font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=Lexend:wght@100..900&display=swap"
+      rel="stylesheet" />
 
-            <!-- jetbrains mono from google font -->
-            <link rel="preconnect" href="https://fonts.googleapis.com">
-            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-            <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Lexend:wght@100..900&display=swap" rel="stylesheet">
+    <!-- jetbrains mono from google font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Lexend:wght@100..900&display=swap"
+      rel="stylesheet" />
 
-            <script src="https://kit.fontawesome.com/274af6286a.js" crossorigin="anonymous"></script>
-    </head>
-    <body>
-        <div class="layout">
+    <script
+      src="https://kit.fontawesome.com/274af6286a.js"
+      crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <div class="layout">
+      <!-- Left Side: Navigation Bar -->
 
-             <!-- Left Side: Navigation Bar -->
-                
-            <nav class="sidebar close" id="sidebar"> <!-- This creates a new name for css styling. nav is navigation bar, which was made to contain a list -->
-                <div class="header">
-                    <h1>Contents</h1>
-                    <button class="toggle-button close-mode fa-solid fa-bars" id="toggle-button"></button>
-                </div>
-            </nav>
-             
-              
-              <main class="content fill" id="content"> <!-- section is denotative. literally means what it is. class is content, so we can style it using this name.-->
-
-                <!-- The banner appears at the very top -->
-                <section class="banner">
-                    <div class="cube fa-solid fa-cube"></div>
-                    <h1>Vimean's Portfolio</h1>
-                    <h2>Task 1 SOE</h2>
-                </section>
-
-                <section class="module">
-                    <h3>Module 1: HTML</h3>
-                    <p>Below is the code</p>
-                    <details>
-                        <summary>HTML Code</summary>
-                        <pre class="line-numbers language-html" id="index.html-codeblock"></pre>
-                    </details>
-                </section>
-
-                <section class="module">
-                    <h3>Module 2: CSS</h3>
-                    <p>content has yet to be displayed</p>
-                </section>
-
-                <section class="module">
-                    <h3>Module 3: Javascript</h3>
-                    <p>content has yet to be displayed</p>
-                </section>
-
-                <section class="module">
-                    <h3>Module 4: Weather Api</h3>
-                    <p>Below is my weather app</p>
-                    <details>
-                        <summary>Weather Api</summary>
-                        <div class="weather-app" id="weather-app">
-                            <h1>Weather App</h1>
-                            <section class="temperature-info"> 
-                                <section class="current-temp">
-                                    <h2>Right Now</h2>
-                                    <div class="display">
-                                        <h3 class="temperature"></h3>
-                                        <h3 class="rain fa-solid fa-sun"></h3>
-                                    </div>
-                                    <h3 class="date"></h3>
-                                </section>
-                                <section class="forecast-temp">
-                                    <h2>All Day</h2>
-                                    <section class="forecast-container">
-                                        <section class="average-temp stat-box">
-                                            <i class="fa-solid fa-sun icon"></i>
-                                            <p class="label">Average Temperature</p>
-                                            <p class="stat bold"></p>
-                                        </section>
-                                        <section class="average-precipitation stat-box">
-                                            <i class="fa-solid fa-droplet icon"></i>
-                                            <p class="label">Average Precipitation</p>
-                                            <p class="stat bold"></p>
-                                        </section>
-                                        <section class="max-temp stat-box">
-                                            <i class="fa-solid fa-temperature-full icon"></i>
-                                            <p class="label">Max Temperature</p>
-                                            <p class="stat bold"></p>
-                                        </section>
-                                    </section>
-                                </section>
-                            </section>
-
-                        </div>
-                    </details>
-                </section>
-
-                <section class="module">
-                    <h3>Module 5: React</h3>
-                    <p>content has yet to be displayed</p>
-                </section>
-
-                <section class="module">
-                    <h3>Module 6: Homelearning</h3>
-                    <p>content has yet to be displayed</p>
-                </section>
-                
-            </main>
+      <nav class="sidebar close" id="sidebar">
+        <!-- This creates a new name for css styling. nav is navigation bar, which was made to contain a list -->
+        <div class="header">
+          <h1>Contents</h1>
+          <button
+            class="toggle-button close-mode fa-solid fa-bars"
+            id="toggle-button"></button>
         </div>
-        <footer id="footer" class="fill"></footer>
-    </body>
+      </nav>
+
+      <main class="content fill" id="content">
+        <!-- section is denotative. literally means what it is. class is content, so we can style it using this name.-->
+
+        <!-- The banner appears at the very top -->
+        <section class="banner">
+          <div class="cube fa-solid fa-cube"></div>
+          <h1>Vimean's Portfolio</h1>
+          <h2>Task 1 SOE</h2>
+        </section>
+
+        <section class="module">
+          <h3>Welcome!</h3>
+          <p>Hi, welcome to my portfolio. Below are some links that are miscellaneous to my project.</p>
+          <p>
+            <i class="fa-brands fa-github blue"></i
+            ><a
+              href="https://github.com/vimeannouv/december_project_soe"
+              target="_blank"
+              rel="noopener noreferrer"
+              >This Project's Github Repo</a
+            >
+          </p>
+          <p>
+            <i class="fa-solid fa-book blue"></i
+            ><a
+              href="https://docs.google.com/document/d/1n5NHSyc0DzUuSn28stZpQvcXR08t1T76veuNIzTq2tA/edit?tab=t.0"
+              target="_blank"
+              rel="noopener noreferrer"
+              >My Logbook + Reflections</a
+            >
+          </p>
+        </section>
+
+        <section class="module">
+          <h3>Module 1: HTML</h3>
+          <p>Below is the code</p>
+          <details>
+            <summary>HTML Code</summary>
+            <pre
+              class="line-numbers language-html"
+              id="index.html-codeblock"></pre>
+          </details>
+        </section>
+
+        <section class="module">
+          <h3>Module 2: CSS</h3>
+          <p>
+            I used multiple CSS files in order to organise my styles. The link
+            redirects you to my styles directory on github.
+          </p>
+          <p>
+            <i class="fa-regular fa-folder blue"></i
+            ><a
+              href="https://github.com/vimeannouv/december_project_soe/tree/main/styles"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Styles Directory</a
+            >
+          </p>
+        </section>
+
+        <section class="module">
+          <h3>Module 3: Javascript</h3>
+          <p>Below is my JS code.</p>
+          <details>
+            <summary>Main Script</summary>
+            <pre
+              class="line-numbers language-js"
+              id="scripts/main.js-codeblock"></pre>
+          </details>
+        </section>
+
+        <section class="module">
+            <h3>Module 4: Weather App</h3>
+            <p>Below is my weather app</p>
+          <p>
+            <i class="fa-solid fa-file blue"></i
+            ><a
+              href=https://github.com/vimeannouv/december_project_soe/blob/main/scripts/weather-api.js"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Weather Script</a
+            >
+          </p>
+          <details>
+            <summary>Weather App</summary>
+            <div class="weather-app" id="weather-app">
+              <h1>Weather App</h1>
+              <section class="temperature-info">
+                <section class="current-temp">
+                  <h2>Right Now</h2>
+                  <div class="display">
+                    <h3 class="temperature"></h3>
+                    <h3 class="rain fa-solid fa-sun"></h3>
+                  </div>
+                  <h3 class="date"></h3>
+                </section>
+                <section class="forecast-temp">
+                  <h2>All Day</h2>
+                  <section class="forecast-container">
+                    <section class="average-temp stat-box">
+                      <i class="fa-solid fa-sun icon"></i>
+                      <p class="label">Average Temperature</p>
+                      <p class="stat bold"></p>
+                    </section>
+                    <section class="average-precipitation stat-box">
+                      <i class="fa-solid fa-droplet icon"></i>
+                      <p class="label">Average Precipitation</p>
+                      <p class="stat bold"></p>
+                    </section>
+                    <section class="max-temp stat-box">
+                      <i class="fa-solid fa-temperature-full icon"></i>
+                      <p class="label">Max Temperature</p>
+                      <p class="stat bold"></p>
+                    </section>
+                  </section>
+                </section>
+              </section>
+            </div>
+          </details>
+        </section>
+
+        <section class="module">
+          <h3>Module 5: React</h3>
+
+          <!--The rel "noopener" and "norefferer" are security measures-->
+          <p>
+            <i class="fa-solid fa-link blue"></i
+            ><a
+              href="https://github.com/vimeannouv/react-test-ts"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Github Repo</a
+            >
+          </p>
+          <p>
+            <i class="fa-solid fa-link blue"></i
+            ><a
+              href="https://vimeannouv.github.io/react-test-ts/"
+              target="_blank"
+              rel="noopener noreferrer"
+              >React App</a
+            >
+          </p>
+        </section>
+
+        <section class="module">
+          <h3>Module 6: Homelearning</h3>
+          <p>Here's a display of my grok certificates</p>
+          <details>
+            <summary>Grok Certificates</summary>
+            <div class="image-gallery">
+              <img
+                src="./assets/certificate-vimean-nouv-intro-html-css-beginners-2-1-1.png"
+                alt="html intro 1 certificate" />
+              <img
+                src="./assets/certificate-vimean-nouv-intro-html-css-beginners-2-1.png"
+                alt="html intro 2 certificate" />
+              <img
+                src="./assets/certificate-vimean-nouv-intro-js-1-1-1.png"
+                alt="js intro certificate" />
+            </div>
+          </details>
+        </section>
+      </main>
+    </div>
+    <footer id="footer" class="fill"></footer>
+  </body>
 </html>

@@ -1,92 +1,102 @@
 function createNavigationLinks() {
+  const headings = document.querySelectorAll(".content .module");
+  const sidebar = document.getElementById("sidebar");
+  const sidebarList = document.createElement("ul");
 
-    const headings = document.querySelectorAll(".content .module");
-    const sidebar = document.getElementById("sidebar");
-    const sidebarList = document.createElement("ul");
+  sidebar.appendChild(sidebarList);
+  headings.forEach((module, index) => {
+    const h3 = module.querySelector("h3");
+    if (!module.id) module.id = `heading-${index}`; // `${"..."} ==> string template`
 
-    sidebar.appendChild(sidebarList);
-    headings.forEach((module, index) => {
-        
-        const h3 = module.querySelector("h3");
-        if (!module.id) 
-            module.id = `heading-${index}`; // `${"..."} ==> string template`
-        
-        console.log(h3.textContent);
-        
-        const li = document.createElement("li");
-        const a = document.createElement("a");
-        
-        a.href = `#${module.id}`; // hyperlink reference. # means look for element
-        a.textContent = h3.textContent.replace(/^Module \d+:\s*/, ''); // removes "module x" fromt the link
+    console.log(h3.textContent);
 
-        function playNavigationLinkAnimation() {
-            const li = a.parentElement;
-            // play anims
-            li.classList.add("link-flash-animation");
-            module.classList.add("content-flash-animation");
-        
-            li.addEventListener("animationend", () => li.classList.remove("link-flash-animation"));
-            h3.addEventListener("animationend", () => h3.classList.remove("content-flash-animation"));
-        }
+    const li = document.createElement("li");
+    const a = document.createElement("a");
 
-        a.addEventListener("click", () => {
-            playNavigationLinkAnimation();
+    a.href = `#${module.id}`; // hyperlink reference. # means look for element
+    a.textContent = h3.textContent.replace(/^Module \d+:\s*/, ""); // removes "module x" fromt the link
 
-            // mobile guard
-            const onMobile = window.matchMedia("(max-width: 768px)").matches;
-            if (!onMobile) 
-                return
+    function playNavigationLinkAnimation() {
+      const li = a.parentElement;
+      // play anims
+      li.classList.add("link-flash-animation");
+      module.classList.add("content-flash-animation");
 
-            // mobile only
-            toggleSidebar()
-        })
+      li.addEventListener("animationend", () =>
+        li.classList.remove("link-flash-animation"),
+      );
+      module.addEventListener("animationend", () =>
+        module.classList.remove("content-flash-animation"),
+      );
+    }
 
-        li.appendChild(a);
-        sidebarList.append(li);
-    })
+    a.addEventListener("click", () => {
+      playNavigationLinkAnimation();
+
+      // mobile guard
+      const onMobile = window.matchMedia("(max-width: 768px)").matches;
+      if (!onMobile) return;
+
+      // mobile only
+      toggleSidebar();
+    });
+
+    li.appendChild(a);
+    sidebarList.append(li);
+  });
 }
 
 function toggleSidebar(ev) {
-    const content = document.getElementById("content");
-    const sidebar = document.getElementById("sidebar");
-    const footer = document.getElementById("footer");
-    const toggleButton = document.getElementById("toggle-button"); 
-    sidebar.classList.toggle("close");
-    footer.classList.toggle("fill");
-    content.classList.toggle("fill");
-    toggleButton.classList.toggle("close-mode");
+  const content = document.getElementById("content");
+  const sidebar = document.getElementById("sidebar");
+  const footer = document.getElementById("footer");
+  const toggleButton = document.getElementById("toggle-button");
+  sidebar.classList.toggle("close");
+  footer.classList.toggle("fill");
+  content.classList.toggle("fill");
+  toggleButton.classList.toggle("close-mode");
 }
 
 function sidebarToggleOnButtonPressed(ev) {
-    const target = ev.target;
-    if (!target.classList.contains("toggle-button")) 
-        return
-    toggleSidebar(ev);
+  const target = ev.target;
+  if (!target.classList.contains("toggle-button")) return;
+  toggleSidebar(ev);
 }
 
-function writeInCodeblock() {
-    const pre = document.getElementById("index.html-codeblock");
-    const code = document.createElement("code");
-    code.className = pre.className;
-    pre.appendChild(code);
-
+async function writeInCodeblock() {
+  try {
     const endpoint = "/.netlify/functions/github";
-    fetch(endpoint)
-    .then(res => res.json())
-    .then(files => {
-        code.textContent = files["index.html"];
-        Prism.highlightElement(code);
-    })
-    .catch(reason => {console.log(reason)});
+    const res = await fetch(endpoint);
+    const files = await res.json();
+    const pres = document.querySelectorAll("pre");
+    console.log(files)
+    pres.forEach((pre) => {
+      // make sure pre is a codeblock guard
+      if (!pre.id.match(/-codeblock/)) return;
+      const fileRequired = pre.id.replace(/-codeblock/, "");
+      const content = files[fileRequired];
+
+      // make sure required file is in json gaurd
+      if (!content) return;
+      const code = document.createElement("code");
+
+      code.className = pre.className;
+      pre.appendChild(code);
+      code.textContent = content;
+      Prism.highlightElement(code);
+    });
+  } catch (reason) {
+    console.log(reason);
+  }
 }
 
 function onContentLoaded() {
-    createNavigationLinks();
-    writeInCodeblock();
+  createNavigationLinks();
+  writeInCodeblock();
 }
 
 function onClick(ev) {
-    sidebarToggleOnButtonPressed(ev);
+  sidebarToggleOnButtonPressed(ev);
 }
 
 document.addEventListener("DOMContentLoaded", onContentLoaded); // fires when the HTML document has been completely loaded and parsed, so basically on start
