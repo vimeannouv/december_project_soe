@@ -16,11 +16,17 @@
 
 .content p,
 summary,
-.file-name {
+.file-name,
+.content ul {
   margin-right: 100px;
   margin-left: 100px;
   overflow-wrap: break-word;
 }
+
+.content li p {
+  margin: 0px;
+}
+
 
 .content h1 {
   color: #c678dd;
