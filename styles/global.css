@@ -62,10 +62,6 @@ summary {
   font-style: italic;
 }
 
-summary {
-  margin-bottom: 60px;
-}
-
 .underline {
   text-decoration: underline;
   text-decoration-color: var(--orange-color);
@@ -83,9 +79,14 @@ footer {
   transition: padding 0.5s ease-in-out;
 }
 
-details {
-    margin-bottom: 30px;
+details:open{
+  margin-bottom: 50px;
 }
+
+details:open summary{
+  margin-bottom: 50px;
+}
+
 
 .fill {
   padding-left: 0px;

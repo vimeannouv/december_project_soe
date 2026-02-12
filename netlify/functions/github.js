@@ -1,4 +1,4 @@
-const files = ["index.html", "scripts/main.js"];
+const files = ["index.html", "scripts/main.js", "scripts/weather-api.js"];
 
 export async function handler() {
   const key = process.env.GITHUB_TOKEN;
