@@ -12,7 +12,7 @@ export async function handler() {
         headers: {
           Authorization: `token ${key}`,
           Accept: "application/vnd.github+json",
-        },
+        }, 
       },
     );
 
